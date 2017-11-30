@@ -5,6 +5,8 @@
     name: "/home/{{ item }}/vagrant/boxes"
     state: directory
     mode: 0755
+    owner: "{{ item }}"
+    group: "{{ item }}"
   with_items:
     - "{{ vagrant_users }}"
   when: vagrant_users
