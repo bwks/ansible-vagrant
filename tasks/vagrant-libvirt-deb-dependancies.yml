@@ -1,0 +1,31 @@
+---
+- name: APT - Install Dependancies 1
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "ruby-libvirt"
+
+- name: APT - Install Dependancies 2
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "qemu"
+    - "libvirt-bin"
+    - "ebtables"
+    - "dnsmasq"
+
+- name: APT - Install Dependancies 3
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "libxslt-dev"
+    - "libxml2-dev"
+    - "libvirt-dev"
+    - "zlib1g-dev"
+    - "ruby-dev"
+
+
+

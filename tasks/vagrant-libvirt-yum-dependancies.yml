@@ -1,0 +1,12 @@
+---
+- name: YUM - Install Dependancies
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "qemu"
+    - "libvirt"
+    - "libvirt-devel"
+    - "ruby-devel"
+    - "gcc"
+    - "qemu-kvm"
