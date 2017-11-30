@@ -1,0 +1,7 @@
+---
+- name: Start and enable the vagrant-libvirt network
+  command: "{{ item }}"
+  with_items: 
+    # define network with create or define
+    - "virsh net-start vagrant-libvirt"
+    - "virsh net-autostart vagrant-libvirt"

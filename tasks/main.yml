@@ -21,11 +21,16 @@
     state: present
   when: ansible_os_family == "RedHat"
 
-- include: "vagrant-libvirt-deb-dependancies.yml"
+- include: "vagrant-libvirt-apt-dependancies.yml"
   when: ansible_os_family == "Debian" and install_vagrant_libvirt
 
 - include: "vagrant-libvirt-yum-dependancies.yml"
   when: ansible_os_family == "RedHat" and install_vagrant_libvirt
 
-- include: plugins.yml
+- include: "libvirt-networks.yml"
+  when: install_vagrant_libvirt
+
+- include: "plugins.yml"
   when: vagrant_plugins
+
+
