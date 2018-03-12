@@ -1,4 +1,4 @@
-Role Name
+ansible-vagrant
 =========
 
 Ansible role to install the vagrant-libvirt provider
