@@ -1,7 +1,17 @@
 ---
+- name: Copy vagrant-libvirt config file to host
+  template:
+    src: templates/vagrant-libvirt.xml.j2
+    dest: /tmp/vagrant-libvirt.xml
+    mode: 0644
+
+
+- name: Start and enable the vagrant-libvirt network
+  command: "virsh net-define /tmp/vagrant-libvirt.xml" 
+  creates: /etc/libvirt/qemu/networks/vagrant-libvirt.xml
+
 - name: Start and enable the vagrant-libvirt network
   command: "{{ item }}"
-  with_items: 
-    # define network with create or define
+  with_items:
     - "virsh net-start vagrant-libvirt"
     - "virsh net-autostart vagrant-libvirt"

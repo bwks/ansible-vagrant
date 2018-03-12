@@ -13,13 +13,13 @@
 
 - name: APT - Install Vagrant on Debian
   apt:
-    deb: "{{ debian_download_url }}" 
+    deb: "{{ debian.download_url }}" 
     state: present
   when: ansible_os_family == "Debian"
 
 - name: YUM - Install Vagrant on RHEL
   yum:
-    name: "{{ rhel_download_url }}"
+    name: "{{ rhel.download_url }}"
     state: present
   when: ansible_os_family == "RedHat"
 
