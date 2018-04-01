@@ -5,10 +5,8 @@
     dest: /tmp/vagrant-libvirt.xml
     mode: 0644
 
-
-- name: Start and enable the vagrant-libvirt network
-  command: "virsh net-define /tmp/vagrant-libvirt.xml" 
-  creates: /etc/libvirt/qemu/networks/vagrant-libvirt.xml
+- name: "Configure the vagrant-libvirt network"
+  command: virsh net-define /tmp/vagrant-libvirt.xml creates=/etc/libvirt/qemu/networks/vagrant-libvirt.xml 
 
 - name: Start and enable the vagrant-libvirt network
   command: "{{ item }}"

@@ -4,7 +4,7 @@
 vagrant_version: "2.0.1"
 
 vagrant_users:
-  - "vagrant"
+  - "{{ ansible_ssh_user }}"
 
 vagrant_plugins:
   - "vagrant-libvirt"

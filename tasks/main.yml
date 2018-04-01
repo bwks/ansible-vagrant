@@ -1,6 +1,7 @@
 ---
 # tasks file for ansible-vagrant
 - name: Create custome box directory
+  become: True
   file:
     name: "/home/{{ item }}/vagrant/boxes"
     state: directory
@@ -12,21 +13,25 @@
   when: vagrant_users
 
 - name: APT - Install Vagrant on Debian
+  become: True
   apt:
     deb: "{{ debian.download_url }}" 
     state: present
   when: ansible_os_family == "Debian"
 
 - name: YUM - Install Vagrant on RHEL
+  become: True
   yum:
     name: "{{ rhel.download_url }}"
     state: present
   when: ansible_os_family == "RedHat"
 
 - include: "vagrant-libvirt-apt-dependancies.yml"
+  become: True
   when: ansible_os_family == "Debian" and install_vagrant_libvirt
 
 - include: "vagrant-libvirt-yum-dependancies.yml"
+  become: True
   when: ansible_os_family == "RedHat" and install_vagrant_libvirt
 
 - include: "libvirt-networks.yml"
